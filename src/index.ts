@@ -3,6 +3,8 @@ import mongoose, {Document, Schema, model, connect} from 'mongoose';
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import logger from "morgan";
+import helmet from "helmet";
+import compression from "compression";
 
 import config from "./util";
 import {routerInit} from "./routes";
@@ -63,6 +65,8 @@ function initializeMiddlewares() {
     app.use(express.json());
     app.use(express.urlencoded({extended: true}));
     app.use(cookieParser());
+    app.use(helmet());
+    app.use(compression());
 
 }
 
